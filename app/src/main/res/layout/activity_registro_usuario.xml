@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroUsuarioActivity"
+    android:background="@drawable/bg_login">
+
+    <TextView
+        android:id="@+id/textViewNovoUsuario"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Cadastrar novo usuário"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextCadNome"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/white"
+        android:hint="Nome"
+        android:paddingLeft="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNovoUsuario"
+        app:layout_constraintStart_toStartOf="@+id/textViewNovoUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNovoUsuario" />
+
+    <EditText
+        android:id="@+id/editTextTextCadEmail"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/white"
+        android:hint="Email"
+        android:paddingLeft="10dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextCadNome"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextCadNome"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCadNome" />
+
+    <EditText
+        android:id="@+id/editTextCadTelefone"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/white"
+        android:hint="Telefone"
+        android:paddingLeft="10dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextCadEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextCadEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCadEmail" />
+
+    <EditText
+        android:id="@+id/editTextTextCadPassword"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/white"
+        android:hint="Senha"
+        android:paddingLeft="10dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCadTelefone"
+        app:layout_constraintStart_toStartOf="@+id/editTextCadTelefone"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCadTelefone" />
+
+    <Button
+        android:id="@+id/buttonCad"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Cadastrar"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextCadPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextCadPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCadPassword" />
+
+    <TextView
+        android:id="@+id/textViewFazerLogin"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Fazer login"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCad"
+        app:layout_constraintStart_toStartOf="@+id/buttonCad"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

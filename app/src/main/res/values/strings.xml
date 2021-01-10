@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Viagens</string>
+
+    <string name="email_erro">O email deve ser digitado</string>
+    <string name="email_invalido">Email digitado invalido</string>
+    <string name="password_erro">A senha deve ser digitada</string>
+    <string name="password_invalido">Favor digitar a senha com minimo 6 digitos</string>
+
+    <string name="cad_nome_erro">O nome deve ser digitado</string>
+    <string name="cad_email_erro">O email deve ser digitado</string>
+    <string name="cad_email_invalido">Email digitado invalido</string>
+    <string name="cad_telefone_erro">O telefone deve ser digitado</string>
+    <string name="cad_telefone_invalido">Telefone digitado invalido</string>
+    <string name="cad_password_erro">A senha deve ser digitada</string>
+    <string name="cad_password_invalido">Senha digitada invalida</string>
+
+</resources>

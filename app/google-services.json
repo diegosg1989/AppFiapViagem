@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243564211291",
+    "project_id": "appfiapviagem-395f5",
+    "storage_bucket": "appfiapviagem-395f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243564211291:android:8b9981f64a84474719a37e",
+        "android_client_info": {
+          "package_name": "com.example.appfiapviagem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243564211291-fvjs9euu7ut3tk691o3l01o6honof4om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_h4004xYOOPehvNopJnbQrTKv9eqYGkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243564211291-fvjs9euu7ut3tk691o3l01o6honof4om.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
