@@ -131,8 +131,5 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             Log.w("error", e.getMessage());
             Toast.makeText(RegistroUsuarioActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
-
-
     }
 }
