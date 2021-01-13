@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -30,6 +35,12 @@ public class CadastroViagemActivity extends AppCompatActivity {
     private Button buttonCadastrarDestino;
 
     private FirebaseFirestore db;
+
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDbRef;
+    private String userId;
+
+    private Destino destino;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,46 +63,27 @@ public class CadastroViagemActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        gravarDadosFireBase();
+                        gravarDadosFireBase3();
                     }
                 }
         );
     }
 
-    private void gravarDadosFireBase() {
-        // Create a new user with a first and last name
-        Map<String, Object> destinos = new HashMap<>();
-        destinos.put("pais", pais.getText().toString());
-        destinos.put("estado", estado.getText().toString());
-        destinos.put("endereco", endereco.getText().toString());
-        destinos.put("hospedagem", hospedagem.getText().toString());
-        destinos.put("valorGasto", valorGasto.getText().toString());
-        destinos.put("avaliacao", avaliacao.getText().toString());
-        destinos.put("descricao", descricao.getText().toString());
+    private void gravarDadosFireBase3() {
 
-        try {
-            // Add a new document with a generated ID
-            db.collection("destinos")
-                    .add(destinos)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d("Success", "DocumentSnapshot added with ID: " + documentReference.getId());
-                            Toast.makeText(CadastroViagemActivity.this, "DocumentSnapshot added with ID: " + documentReference.getId(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("Failure", "Error adding document", e);
-                            Toast.makeText(CadastroViagemActivity.this, "Error adding document", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
-        catch (Exception e){
-            Log.w("error", e.getMessage());
-            Toast.makeText(CadastroViagemActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Destino").push();
+
+        Destino destino = new Destino();
+        destino.setPais(pais.getText().toString());
+        destino.setEstado(estado.getText().toString());
+        destino.setEndereco(endereco.getText().toString());
+        destino.setHospedagem(hospedagem.getText().toString());
+        destino.setValorGasto(valorGasto.getText().toString());
+        destino.setAvaliacao(avaliacao.getText().toString());
+        destino.setDescricao(descricao.getText().toString());
+
+        databaseReference.setValue(destino);
+
+        Toast.makeText(CadastroViagemActivity.this, "Dados gravados com sucesso", Toast.LENGTH_SHORT).show();
     }
 }

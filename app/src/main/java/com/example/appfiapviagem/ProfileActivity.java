@@ -10,6 +10,7 @@ import android.widget.Button;
 public class ProfileActivity extends AppCompatActivity {
 
     private Button buttonNovaViagem;
+    private Button buttonListaViagens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         buttonNovaViagem = (Button) findViewById(R.id.buttonNovaViagem);
+
+        buttonListaViagens = (Button) findViewById(R.id.buttonListaViagens);
 
         buttonNovaViagem.setOnClickListener(
                 new View.OnClickListener(){
@@ -29,6 +32,16 @@ public class ProfileActivity extends AppCompatActivity {
                 }
         );
 
+        buttonListaViagens.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(ProfileActivity.this, ViewDestinosActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
     }
 }
