@@ -20,11 +20,9 @@ public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdap
     @Override
     protected void onBindViewHolder(@NonNull DestinoViewholder holder, int position, @NonNull Destino model){
 
-        holder.firstname.setText(model.getPais());
-
-        holder.lastname.setText(model.getEstado());
-
-        holder.age.setText(model.getEndereco());
+        holder.pais.setText(model.getPais());
+        holder.estado.setText(model.getEstado());
+        holder.endereco.setText(model.getEndereco());
     }
 
     @NonNull
@@ -36,14 +34,14 @@ public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdap
 
     class DestinoViewholder extends RecyclerView.ViewHolder {
 
-        TextView firstname, lastname, age;
+        TextView pais, estado, endereco;
 
         public DestinoViewholder(@NonNull View itemView) {
             super(itemView);
 
-            firstname = itemView.findViewById(R.id.firstname);
-            lastname = itemView.findViewById(R.id.lastname);
-            age = itemView.findViewById(R.id.age);
+            pais = itemView.findViewById(R.id.pais);
+            estado = itemView.findViewById(R.id.estado);
+            endereco = itemView.findViewById(R.id.endereco);
         }
     }
 }
