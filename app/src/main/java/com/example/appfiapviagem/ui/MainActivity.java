@@ -1,8 +1,10 @@
-package com.example.appfiapviagem;
+package com.example.appfiapviagem.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.appfiapviagem.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight">
-        <activity android:name=".ViewDestinosActivity"></activity>
-        <activity android:name=".CadastroViagemActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.ViewDestinosActivity"></activity>
+        <activity android:name=".ui.CadastroViagemActivity" />
+        <activity android:name=".ui.ProfileActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroUsuarioActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.RegistroUsuarioActivity" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

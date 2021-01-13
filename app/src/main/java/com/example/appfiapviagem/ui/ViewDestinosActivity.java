@@ -1,4 +1,4 @@
-package com.example.appfiapviagem;
+package com.example.appfiapviagem.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.appfiapviagem.R;
+import com.example.appfiapviagem.adapter.DestinoAdapter;
+import com.example.appfiapviagem.model.Destino;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,19 +21,15 @@ public class ViewDestinosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private DestinoAdapter destinoAdapter;
-    private DatabaseReference mBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_destinos);
 
-        mBase = FirebaseDatabase.getInstance().getReference();
-
         recyclerView = findViewById(R.id.recycler1);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         Query query = FirebaseDatabase.getInstance().getReference().child("Destino");
 

@@ -1,10 +1,12 @@
-package com.example.appfiapviagem;
+package com.example.appfiapviagem.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.appfiapviagem.R;
 
 public class SplashActivity extends AppCompatActivity {
 

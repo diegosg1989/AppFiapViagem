@@ -1,4 +1,4 @@
-package com.example.appfiapviagem;
+package com.example.appfiapviagem.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appfiapviagem.R;
+import com.example.appfiapviagem.model.Destino;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 

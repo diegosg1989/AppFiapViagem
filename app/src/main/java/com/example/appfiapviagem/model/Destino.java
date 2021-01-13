@@ -1,4 +1,4 @@
-package com.example.appfiapviagem;
+package com.example.appfiapviagem.model;
 
 import android.widget.EditText;
 
