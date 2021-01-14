@@ -54,13 +54,13 @@ public class CadastroViagemActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        gravarDadosFireBase3();
+                        gravarDadosFireBase();
                     }
                 }
         );
     }
 
-    private void gravarDadosFireBase3() {
+    private void gravarDadosFireBase() {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Destino").push();
 

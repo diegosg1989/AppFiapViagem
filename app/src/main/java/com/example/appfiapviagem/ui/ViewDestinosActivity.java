@@ -38,12 +38,14 @@ public class ViewDestinosActivity extends AppCompatActivity {
                     @NonNull
                     @Override
                     public Destino parseSnapshot(@NonNull DataSnapshot snapshot) {
-
                         Destino destino = new Destino();
                         destino.setPais(snapshot.child("pais").getValue().toString());
                         destino.setEstado(snapshot.child("estado").getValue().toString());
                         destino.setEndereco(snapshot.child("endereco").getValue().toString());
-
+                        destino.setHospedagem(snapshot.child("hospedagem").getValue().toString());
+                        destino.setValorGasto(snapshot.child("valorGasto").getValue().toString());
+                        destino.setAvaliacao(snapshot.child("avaliacao").getValue().toString());
+                        destino.setDescricao(snapshot.child("descricao").getValue().toString());
                         return destino;
                     }
                 })
