@@ -18,35 +18,44 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdapter.DestinoViewholder>{
+public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoViewholder> {
 
-    FirebaseRecyclerOptions<Destino> options;
+    private List<Destino> destinos;
 
-    public DestinoAdapter(@NonNull FirebaseRecyclerOptions<Destino> options){
-        super(options);
+    public DestinoAdapter(List<Destino> destinos) {
+        this.destinos = destinos;
     }
 
 
     @NonNull
     @Override
-    public DestinoViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public DestinoAdapter.DestinoViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.destino, parent, false);
         return new DestinoAdapter.DestinoViewholder(view);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull DestinoAdapter.DestinoViewholder holder, int position) {
+
+        Destino destino = destinos.get(position);
+
+        holder.pais.setText(destino.getPais());
+        holder.estado.setText(destino.getEstado());
+        holder.endereco.setText(destino.getEndereco());
+        holder.hospedagem.setText(destino.getHospedagem());
+        holder.valorGasto.setText(destino.getValorGasto());
+        holder.avaliacao.setText(destino.getAvaliacao());
+        holder.descricao.setText(destino.getDescricao());
+
+        holder.buttonDeletar.setOnClickListener(view -> removerItem(position));
+    }
 
     @Override
-    protected void onBindViewHolder(@NonNull DestinoViewholder holder, int position, @NonNull Destino model){
+    public int getItemCount() {
+        return destinos.size();
+    }
 
-        holder.pais.setText(model.getPais());
-        holder.estado.setText(model.getEstado());
-        holder.endereco.setText(model.getEndereco());
-        holder.hospedagem.setText(model.getHospedagem());
-        holder.valorGasto.setText(model.getValorGasto());
-        holder.avaliacao.setText(model.getAvaliacao());
-        holder.descricao.setText(model.getDescricao());
-
-//        holder.buttonDeletar.setOnClickListener(view -> itemRemoved(holder, position));
+    public void removerItem(int position){
 
     }
 
@@ -69,12 +78,4 @@ public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdap
             buttonDeletar = itemView.findViewById(R.id.buttonDeletar);
         }
     }
-
-
-
-//    private void removerItem(int position) {
-//        destinos.remove(position);
-//        notifyItemRemoved(position);
-//        notifyItemRangeChanged(position, destinos.size());
-//    }
 }

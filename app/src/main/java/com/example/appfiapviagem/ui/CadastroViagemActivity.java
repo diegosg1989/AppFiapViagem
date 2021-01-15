@@ -1,8 +1,10 @@
 package com.example.appfiapviagem.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,8 +12,11 @@ import android.widget.Toast;
 
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.model.Destino;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CadastroViagemActivity extends AppCompatActivity {
@@ -54,27 +59,86 @@ public class CadastroViagemActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        gravarDadosFireBase();
+                        autenticaCadastroViagemForm();
                     }
                 }
         );
     }
 
-    private void gravarDadosFireBase() {
+    private void autenticaCadastroViagemForm(){
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Destino").push();
+        if(pais.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "O país deve ser digitado", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Destino destino = new Destino();
-        destino.setPais(pais.getText().toString());
-        destino.setEstado(estado.getText().toString());
-        destino.setEndereco(endereco.getText().toString());
-        destino.setHospedagem(hospedagem.getText().toString());
-        destino.setValorGasto(valorGasto.getText().toString());
-        destino.setAvaliacao(avaliacao.getText().toString());
-        destino.setDescricao(descricao.getText().toString());
+        if(estado.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "O estado deve ser digitado", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        databaseReference.setValue(destino);
+        if(endereco.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "O endereço deve ser digitado", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Toast.makeText(CadastroViagemActivity.this, "Dados gravados com sucesso", Toast.LENGTH_SHORT).show();
+        if(hospedagem.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "A hospedagem deve ser digitado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(valorGasto.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "A valor gasto deve ser digitado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(avaliacao.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "A avaliação deve ser digitada", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(descricao.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "A descricao deve ser digitada", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        gravarViagens();
+    }
+
+    private void gravarViagens(){
+
+        try {
+            Destino destino = new Destino(
+                    pais.getText().toString(),
+                    estado.getText().toString(),
+                    endereco.getText().toString(),
+                    hospedagem.getText().toString(),
+                    valorGasto.getText().toString(),
+                    avaliacao.getText().toString(),
+                    descricao.getText().toString());
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("Destino")
+                    .add(destino)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d("sucesso", "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Toast.makeText(getApplicationContext(), "Nova viagem cadastrada com sucesso", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("falha", "Error adding document", e);
+                            Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+        catch (Exception e){
+            Log.w("error", e.getMessage());
+            Toast.makeText(CadastroViagemActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

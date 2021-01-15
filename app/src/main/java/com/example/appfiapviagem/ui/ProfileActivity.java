@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(ProfileActivity.this, ViewDestinosActivity.class);
+                        Intent intent = new Intent(ProfileActivity.this, VisualizarViagensActivity.class);
                         startActivity(intent);
                     }
                 }

@@ -2,6 +2,8 @@ package com.example.appfiapviagem.model;
 
 import android.widget.EditText;
 
+import java.util.Objects;
+
 public class Destino {
 
     private String pais;
@@ -13,6 +15,16 @@ public class Destino {
     private String descricao;
 
     public Destino() {
+    }
+
+    public Destino(String pais, String estado, String endereco, String hospedagem, String valorGasto, String avaliacao, String descricao) {
+        this.pais = pais;
+        this.estado = estado;
+        this.endereco = endereco;
+        this.hospedagem = hospedagem;
+        this.valorGasto = valorGasto;
+        this.avaliacao = avaliacao;
+        this.descricao = descricao;
     }
 
     public String getPais() {
@@ -69,5 +81,37 @@ public class Destino {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Destino)) return false;
+        Destino destino = (Destino) o;
+        return Objects.equals(getPais(), destino.getPais()) &&
+                Objects.equals(getEstado(), destino.getEstado()) &&
+                Objects.equals(getEndereco(), destino.getEndereco()) &&
+                Objects.equals(getHospedagem(), destino.getHospedagem()) &&
+                Objects.equals(getValorGasto(), destino.getValorGasto()) &&
+                Objects.equals(getAvaliacao(), destino.getAvaliacao()) &&
+                Objects.equals(getDescricao(), destino.getDescricao());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPais(), getEstado(), getEndereco(), getHospedagem(), getValorGasto(), getAvaliacao(), getDescricao());
+    }
+
+    @Override
+    public String toString() {
+        return "Destino{" +
+                "pais='" + pais + '\'' +
+                ", estado='" + estado + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", hospedagem='" + hospedagem + '\'' +
+                ", valorGasto='" + valorGasto + '\'' +
+                ", avaliacao='" + avaliacao + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
     }
 }
