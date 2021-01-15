@@ -1,5 +1,6 @@
 package com.example.appfiapviagem.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdap
         holder.avaliacao.setText(model.getAvaliacao());
         holder.descricao.setText(model.getDescricao());
 
-//        holder.buttonDeletar.setOnClickListener(view -> removerItem(position));
+//        holder.buttonDeletar.setOnClickListener(view -> itemRemoved(holder, position));
 
     }
 
@@ -68,6 +69,8 @@ public class DestinoAdapter extends FirebaseRecyclerAdapter<Destino, DestinoAdap
             buttonDeletar = itemView.findViewById(R.id.buttonDeletar);
         }
     }
+
+
 
 //    private void removerItem(int position) {
 //        destinos.remove(position);
