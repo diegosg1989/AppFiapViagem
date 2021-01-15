@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Destino {
 
+    private String id;
     private String pais;
     private String estado;
     private String endereco;
@@ -25,6 +26,14 @@ public class Destino {
         this.valorGasto = valorGasto;
         this.avaliacao = avaliacao;
         this.descricao = descricao;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPais() {
@@ -88,7 +97,8 @@ public class Destino {
         if (this == o) return true;
         if (!(o instanceof Destino)) return false;
         Destino destino = (Destino) o;
-        return Objects.equals(getPais(), destino.getPais()) &&
+        return Objects.equals(getId(), destino.getId()) &&
+                Objects.equals(getPais(), destino.getPais()) &&
                 Objects.equals(getEstado(), destino.getEstado()) &&
                 Objects.equals(getEndereco(), destino.getEndereco()) &&
                 Objects.equals(getHospedagem(), destino.getHospedagem()) &&
@@ -99,13 +109,14 @@ public class Destino {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPais(), getEstado(), getEndereco(), getHospedagem(), getValorGasto(), getAvaliacao(), getDescricao());
+        return Objects.hash(getId(), getPais(), getEstado(), getEndereco(), getHospedagem(), getValorGasto(), getAvaliacao(), getDescricao());
     }
 
     @Override
     public String toString() {
         return "Destino{" +
-                "pais='" + pais + '\'' +
+                "id='" + id + '\'' +
+                ", pais='" + pais + '\'' +
                 ", estado='" + estado + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", hospedagem='" + hospedagem + '\'' +

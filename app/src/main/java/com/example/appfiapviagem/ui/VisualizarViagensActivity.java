@@ -54,18 +54,22 @@ public class VisualizarViagensActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Destino destino = new Destino();
-                                destino.setPais(document.getData().get("pais").toString());
-                                destino.setEstado(document.getData().get("estado").toString());
-                                destino.setEndereco(document.getData().get("endereco").toString());
-                                destino.setHospedagem(document.getData().get("hospedagem").toString());
-                                destino.setValorGasto(document.getData().get("valorGasto").toString());
-                                destino.setAvaliacao(document.getData().get("avaliacao").toString());
-                                destino.setDescricao(document.getData().get("descricao").toString());
+                                Destino destino = new Destino(
+                                        document.getData().get("pais").toString(),
+                                        document.getData().get("estado").toString(),
+                                        document.getData().get("endereco").toString(),
+                                        document.getData().get("hospedagem").toString(),
+                                        document.getData().get("valorGasto").toString(),
+                                        document.getData().get("avaliacao").toString(),
+                                        document.getData().get("descricao").toString());
+                                destino.setId(document.getId());
+
                                 destinos.add(destino);
+
+                                Log.i("sucesso", document.getId() + " => " + document.getData());
                             }
                         } else {
-                            Log.w("sucesso", "Error getting documents.", task.getException());
+                            Log.w("erro", "Error getting documents.", task.getException());
                         }
                     }
                 });

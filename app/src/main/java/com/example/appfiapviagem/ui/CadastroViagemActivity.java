@@ -131,7 +131,7 @@ public class CadastroViagemActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Log.w("falha", "Error adding document", e);
+                            Log.w("error", "Error adding document", e);
                             Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
                         }
                     });

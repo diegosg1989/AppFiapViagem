@@ -1,21 +1,27 @@
 package com.example.appfiapviagem.adapter;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.model.Destino;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.appfiapviagem.ui.CadastroViagemActivity;
+import com.example.appfiapviagem.ui.LoginActivity;
+import com.example.appfiapviagem.ui.RegistroUsuarioActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoViewholder> {
@@ -26,12 +32,10 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         this.destinos = destinos;
     }
 
-
     @NonNull
     @Override
     public DestinoAdapter.DestinoViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.destino, parent, false);
-        return new DestinoAdapter.DestinoViewholder(view);
+        return new DestinoViewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.destino, parent, false));
     }
 
     @Override
@@ -48,6 +52,7 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         holder.descricao.setText(destino.getDescricao());
 
         holder.buttonDeletar.setOnClickListener(view -> removerItem(position));
+        holder.buttonEditar.setOnClickListener(view -> editarItem(position, destino));
     }
 
     @Override
@@ -55,14 +60,57 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         return destinos.size();
     }
 
-    public void removerItem(int position){
+    private void removerItem(int position){
+
+        Destino destino = destinos.get(position);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Destino").document(destino.getId())
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("sucesso", "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("error", "Error deleting document", e);
+                    }
+                });
+
+        destinos.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, destinos.size());
+    }
+
+    private void editarItem(int position, Destino destino){
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference documentReference = db.collection("Destino").document(destino.getId());
+        documentReference.update("pais", destino.getPais());
+        documentReference.update("estado", destino.getEstado());
+        documentReference.update("endereco", destino.getEndereco());
+        documentReference.update("hospedagem", destino.getHospedagem());
+        documentReference.update("valorGasto", destino.getValorGasto());
+        documentReference.update("avaliacao", destino.getAvaliacao());
+        documentReference.update("descricao", destino.getDescricao())
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("sucesso", "DocumentSnapshot successfully update!");
+                }
+            });
 
     }
 
     class DestinoViewholder extends RecyclerView.ViewHolder {
 
         TextView pais, estado, endereco, hospedagem, valorGasto, avaliacao, descricao;
-        Button buttonDeletar;
+        Button buttonDeletar, buttonEditar;
 
         public DestinoViewholder(@NonNull View itemView) {
             super(itemView);
@@ -75,7 +123,8 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
             avaliacao = itemView.findViewById(R.id.avaliacao);
             descricao = itemView.findViewById(R.id.descricao);
 
-            buttonDeletar = itemView.findViewById(R.id.buttonDeletar);
+            buttonDeletar = itemView.findViewById(R.id.buttonEditar);
+            buttonEditar = itemView.findViewById(R.id.buttonEditar);
         }
     }
 }

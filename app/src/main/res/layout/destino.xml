@@ -154,13 +154,22 @@
             app:layout_constraintTop_toTopOf="@+id/textView1" />
 
         <Button
+            android:id="@+id/buttonEditar"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="editar"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/estado"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/buttonDeletar"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:text="deletar"
             android:textSize="10sp"
-            tools:layout_editor_absoluteX="306dp"
-            tools:layout_editor_absoluteY="10dp" />
+            app:layout_constraintStart_toEndOf="@+id/buttonEditar"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
