@@ -3,6 +3,7 @@ package com.example.appfiapviagem.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,13 +33,17 @@ public class VisualizarViagensActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DestinoAdapter destinoAdapter;
 
-    private static final List<Destino> destinos = new ArrayList<>();
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_viagens);
+
+
+        List<Destino> destinos = new ArrayList<>();
+
 
         recyclerView = findViewById(R.id.recycler1);
 
@@ -75,7 +80,6 @@ public class VisualizarViagensActivity extends AppCompatActivity {
                 });
 
         destinoAdapter = new DestinoAdapter(destinos);
-
         recyclerView.setAdapter(destinoAdapter);
     }
 }

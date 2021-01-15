@@ -7,56 +7,25 @@
     tools:context=".ui.ProfileActivity"
     android:background="@drawable/bg_login">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:background="?attr/colorButtonNormal"
+    <Button
+        android:id="@+id/buttonNovaViagem"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Cadastrar Nova Viagem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="117dp"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView18"
-            app:srcCompat="@drawable/profile" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:paddingLeft="10dp"
-            android:text="Olá,"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:paddingLeft="20dp"
-            android:text="Maria"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:textAlignment="viewStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/buttonListaViagens"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Listar viagens"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNovaViagem" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -88,34 +57,5 @@
             app:srcCompat="@drawable/star" />
 
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <Button
-            android:id="@+id/buttonNovaViagem"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Cadastrar Nova Viagem"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonListaViagens"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Listar viagens"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonNovaViagem" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

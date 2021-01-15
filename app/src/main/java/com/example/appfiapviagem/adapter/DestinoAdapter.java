@@ -81,7 +81,7 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
                     }
                 });
 
-        destinos.remove(position);
+        destinos.remove(destino);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, destinos.size());
     }
@@ -105,7 +105,12 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
                 }
             });
 
+
+
+
     }
+
+
 
     class DestinoViewholder extends RecyclerView.ViewHolder {
 
@@ -123,7 +128,7 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
             avaliacao = itemView.findViewById(R.id.avaliacao);
             descricao = itemView.findViewById(R.id.descricao);
 
-            buttonDeletar = itemView.findViewById(R.id.buttonEditar);
+            buttonDeletar = itemView.findViewById(R.id.buttonDeletar);
             buttonEditar = itemView.findViewById(R.id.buttonEditar);
         }
     }

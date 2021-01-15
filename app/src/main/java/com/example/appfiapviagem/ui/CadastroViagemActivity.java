@@ -3,6 +3,7 @@ package com.example.appfiapviagem.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -59,7 +60,11 @@ public class CadastroViagemActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         autenticaCadastroViagemForm();
+
+                        Intent intent = new Intent(CadastroViagemActivity.this, ProfileActivity.class);
+                        startActivity(intent);
                     }
                 }
         );

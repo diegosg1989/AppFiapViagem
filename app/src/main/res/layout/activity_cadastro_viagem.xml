@@ -7,89 +7,6 @@
     tools:context=".ui.CadastroViagemActivity"
     android:background="@drawable/bg_login">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:background="?attr/colorButtonNormal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="117dp"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView18"
-            app:srcCompat="@drawable/profile" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:paddingLeft="10dp"
-            android:text="Olá,"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:paddingLeft="20dp"
-            android:text="Maria"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:textAlignment="viewStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="?attr/colorButtonNormal"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:src="@drawable/home" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/profileicon" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/star" />
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="0dp"
@@ -97,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -240,5 +157,35 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="?attr/colorButtonNormal"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/home" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profileicon" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/star" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
