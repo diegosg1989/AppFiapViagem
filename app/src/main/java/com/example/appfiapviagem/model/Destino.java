@@ -2,9 +2,10 @@ package com.example.appfiapviagem.model;
 
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Destino {
+public class Destino implements Serializable {
 
     private String id;
     private String pais;

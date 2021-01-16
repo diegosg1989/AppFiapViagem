@@ -1,5 +1,6 @@
 package com.example.appfiapviagem.adapter;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfiapviagem.R;
@@ -47,7 +50,13 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         holder.descricao.setText(destino.getDescricao());
 
         holder.buttonDeletar.setOnClickListener(view -> removerItem(position));
-        holder.buttonEditar.setOnClickListener(view -> editarItem(position, destino));
+        holder.buttonEditar.setOnClickListener(view -> {
+//            editarItem(position, destino, view);
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Model", destino);
+
+        });
     }
 
     @Override
@@ -81,7 +90,7 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         notifyItemRangeChanged(position, destinos.size());
     }
 
-    private void editarItem(int position, Destino destino){
+    private void editarItem(int position, Destino destino, View view){
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -99,7 +108,6 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
                     Log.d("sucesso", "DocumentSnapshot successfully update!");
                 }
             });
-
 
 
 
