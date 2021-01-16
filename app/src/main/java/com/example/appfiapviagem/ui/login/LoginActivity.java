@@ -1,4 +1,4 @@
-package com.example.appfiapviagem.ui;
+package com.example.appfiapviagem.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appfiapviagem.R;
+import com.example.appfiapviagem.ui.ProfileActivity;
+import com.example.appfiapviagem.ui.usuario.RegistroUsuarioActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

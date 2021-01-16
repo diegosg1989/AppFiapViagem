@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.appfiapviagem.R;
+import com.example.appfiapviagem.ui.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

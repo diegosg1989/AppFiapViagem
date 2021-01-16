@@ -1,4 +1,4 @@
-package com.example.appfiapviagem.ui;
+package com.example.appfiapviagem.ui.viagens;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;

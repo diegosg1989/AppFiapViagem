@@ -1,22 +1,17 @@
 package com.example.appfiapviagem.adapter;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.model.Destino;
-import com.example.appfiapviagem.ui.CadastroViagemActivity;
-import com.example.appfiapviagem.ui.LoginActivity;
-import com.example.appfiapviagem.ui.RegistroUsuarioActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;

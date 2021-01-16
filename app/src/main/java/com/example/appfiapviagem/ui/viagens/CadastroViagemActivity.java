@@ -1,4 +1,4 @@
-package com.example.appfiapviagem.ui;
+package com.example.appfiapviagem.ui.viagens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.model.Destino;
+import com.example.appfiapviagem.ui.ProfileActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.appfiapviagem.R;
+import com.example.appfiapviagem.ui.viagens.CadastroViagemActivity;
+import com.example.appfiapviagem.ui.viagens.VisualizarViagensActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
