@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight">
-        <activity android:name=".ui.viagens.VisualizarViagensActivity"></activity>
+        <activity android:name=".ui.viagens.AlterarViagemActivity"></activity>
+        <activity android:name=".ui.viagens.VisualizarViagensActivity" />
         <activity android:name=".ui.SobreActivity" />
         <activity android:name=".ui.viagens.CadastroViagemActivity" />
         <activity android:name=".ui.ProfileActivity" />

@@ -33,7 +33,7 @@ public class VisualizarViagensActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DestinoAdapter destinoAdapter;
 
-
+    private List<Destino> destinos = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -41,11 +41,7 @@ public class VisualizarViagensActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_viagens);
 
-
-        List<Destino> destinos = new ArrayList<>();
-
-
-        recyclerView = findViewById(R.id.recycler1);
+        recyclerView = findViewById(R.id.recycler);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -73,13 +69,15 @@ public class VisualizarViagensActivity extends AppCompatActivity {
 
                                 Log.i("sucesso", document.getId() + " => " + document.getData());
                             }
+
+                            destinoAdapter = new DestinoAdapter(destinos);
+
+                            recyclerView.setAdapter(destinoAdapter);
+
                         } else {
                             Log.w("erro", "Error getting documents.", task.getException());
                         }
                     }
                 });
-
-        destinoAdapter = new DestinoAdapter(destinos);
-        recyclerView.setAdapter(destinoAdapter);
     }
 }

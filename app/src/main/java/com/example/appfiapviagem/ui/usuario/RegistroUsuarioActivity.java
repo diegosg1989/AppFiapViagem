@@ -23,9 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
-    private EditText cadNome;
     private EditText cadEmail;
-    private EditText cadTelefone;
     private EditText cadPassword;
     private Button buttonCad;
     private TextView fazerLogin;
@@ -37,9 +35,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
-        cadNome = (EditText) findViewById(R.id.editTextTextCadNome);
         cadEmail = (EditText) findViewById(R.id.editTextTextCadEmail);
-        cadTelefone = (EditText) findViewById(R.id.editTextCadTelefone);
         cadPassword = (EditText) findViewById(R.id.editTextTextCadPassword);
         buttonCad = (Button) findViewById(R.id.buttonCad);
         fazerLogin = (TextView) findViewById(R.id.textViewFazerLogin);
@@ -69,11 +65,6 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
     public void autenticaCadastroForm(){
 
-        if(cadNome.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.cad_nome_erro), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         if(cadEmail.getText().toString().isEmpty()){
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.cad_email_erro), Toast.LENGTH_SHORT).show();
             return;
@@ -81,16 +72,6 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
         if(!Patterns.EMAIL_ADDRESS.matcher(cadEmail.getText().toString()).matches()){
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.cad_email_invalido), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(cadTelefone.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.cad_telefone_erro), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(!Patterns.PHONE.matcher(cadTelefone.getText().toString()).matches()){
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.cad_telefone_invalido), Toast.LENGTH_SHORT).show();
             return;
         }
 

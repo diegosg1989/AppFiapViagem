@@ -30,7 +30,7 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
     @NonNull
     @Override
     public DestinoAdapter.DestinoViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DestinoViewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.destino, parent, false));
+        return new DestinoViewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_alterar_viagem, parent, false));
     }
 
     @Override
