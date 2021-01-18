@@ -23,8 +23,14 @@ Foi desenvolvido uma solução de cadastramento de viagens, onde permite um CRUD
 
 - Aberto a IDE, no menu **tools** clicar em **Firebase**, onde abrirá uma janela com todas as funcionalidades do firebase, utilizaremos duas nesse projeto
 
-- Clicar em **Authentication** depois em **Connect your app yo Firebase**, feito isso o Android Studio irá se conectar ao Firebase configurado
+  - **Authentication** para validação do usuario e login:
+  
+    - Clicar em **Authentication** depois em **Connect your app yo Firebase**, feito isso o Android Studio irá se conectar ao Firebase configurado
 
-- Clicar em **Add Firebase Authentication to you app** onde todas as biblioteclas serão importadas para o projeto
+    - Clicar em **Add Firebase Authentication to you app** onde todas as biblioteclas serão importadas para o projeto
+
+  - **Firestore** onde consta os dados gravado do app:
+  
+    - Clicar em **Add Cloud Firestore to your app** onde todas as bibliotecas em relação a banco serão inportadas para o projeto
 
 - Executar o projeto em `Run 'app'`, e o sistema abrirá em um emulador do Android Studio
