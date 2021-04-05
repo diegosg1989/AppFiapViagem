@@ -22,10 +22,17 @@ import java.util.List;
 
 public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoViewholder> {
 
+    public interface Listener {
+        void onItemClick(Destino destino);
+    }
+
     private List<Destino> destinos;
 
-    public DestinoAdapter(List<Destino> destinos) {
+    private Listener listener;
+
+    public DestinoAdapter(List<Destino> destinos, Listener listener) {
         this.destinos = destinos;
+        this.listener = listener;
     }
 
     @NonNull
@@ -48,14 +55,14 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
         holder.descricao.setText(destino.getDescricao());
 
         holder.buttonDeletar.setOnClickListener(view -> removerItem(position));
-        holder.buttonEditar.setOnClickListener(view -> {
-//            editarItem(position, destino, view);
 
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Model", destino);
+        holder.buttonEditar.setOnClickListener(view -> {
+
+            listener.onItemClick(destino);
 
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -110,6 +117,10 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
 
 
     }
+
+
+
+
 
 
     class DestinoViewholder extends RecyclerView.ViewHolder {

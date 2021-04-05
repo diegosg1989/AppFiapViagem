@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.util.Log;
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.adapter.DestinoAdapter;
 import com.example.appfiapviagem.model.Destino;
+import com.example.appfiapviagem.ui.login.LoginActivity;
+import com.example.appfiapviagem.ui.usuario.RegistroUsuarioActivity;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -70,7 +73,17 @@ public class VisualizarViagensActivity extends AppCompatActivity {
                                 Log.i("sucesso", document.getId() + " => " + document.getData());
                             }
 
-                            destinoAdapter = new DestinoAdapter(destinos);
+                            destinoAdapter = new DestinoAdapter(destinos, new DestinoAdapter.Listener() {
+                                @Override
+                                public void onItemClick(Destino destino) {
+
+                                    Intent intent = new Intent(VisualizarViagensActivity.this, CadastroViagemActivity.class);
+                                    intent.putExtra("chave", destino);
+                                    startActivity(intent);
+
+                                    Log.d("sucesso", destino.getPais());
+                                }
+                            });
 
                             recyclerView.setAdapter(destinoAdapter);
 
