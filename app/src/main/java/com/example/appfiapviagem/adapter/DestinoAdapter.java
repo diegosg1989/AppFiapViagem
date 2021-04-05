@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfiapviagem.R;
@@ -112,7 +110,6 @@ public class DestinoAdapter extends RecyclerView.Adapter<DestinoAdapter.DestinoV
 
 
     }
-
 
 
     class DestinoViewholder extends RecyclerView.ViewHolder {
