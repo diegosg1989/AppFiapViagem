@@ -73,7 +73,7 @@ public class CadastroViagemActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        Destino destino = (Destino)bundle.getSerializable("chave");
+        Destino destino = (Destino) bundle.getSerializable("chave");
 
         Log.d("sucesso", destino.getPais());
 
