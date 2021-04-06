@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appfiapviagem.R;
@@ -32,27 +33,20 @@ public class CadastroViagemActivity extends AppCompatActivity {
     private EditText descricao;
     private Button buttonCadastrarDestino;
 
+    private TextView textViewNovoDestino;
+
     private FirebaseFirestore db;
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mDbRef;
     private String userId;
 
-    private Destino destino;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_viagem);
 
-        pais = (EditText) findViewById(R.id.editTextTextPais);
-        estado = (EditText) findViewById(R.id.editTextTextEstado);
-        endereco = (EditText) findViewById(R.id.editTextTextEndereco);
-        hospedagem = (EditText) findViewById(R.id.editTextTextHospedagem);
-        valorGasto = (EditText) findViewById(R.id.editTextValorGasto);
-        avaliacao = (EditText) findViewById(R.id.editTextAvaliacao);
-        descricao = (EditText) findViewById(R.id.editTextTextDescricao);
-
+        textViewNovoDestino = (TextView) findViewById(R.id.textViewNovoDestino);
         buttonCadastrarDestino = (Button) findViewById(R.id.buttonCadastrarDestino);
 
         db = FirebaseFirestore.getInstance();
@@ -64,22 +58,69 @@ public class CadastroViagemActivity extends AppCompatActivity {
 
                         autenticaCadastroViagemForm();
 
+                        gravarViagens();
+
                         Intent intent = new Intent(CadastroViagemActivity.this, ProfileActivity.class);
                         startActivity(intent);
                     }
                 }
         );
 
-
         Bundle bundle = getIntent().getExtras();
 
-        Destino destino = (Destino) bundle.getSerializable("chave");
+        if(bundle != null){
 
-        Log.d("sucesso", destino.getPais());
+            String acao = (String) bundle.getSerializable("acao");
 
+            if(acao.equals("alterar")){
+
+                getValoresTela();
+
+                Destino destino = (Destino) bundle.getSerializable("destino");
+
+                textViewNovoDestino.setText("Alterar Viagem");
+
+                pais.setText(destino.getPais());
+                estado.setText(destino.getEstado());
+                endereco.setText(destino.getEndereco());
+                hospedagem.setText(destino.getHospedagem());
+                valorGasto.setText(destino.getValorGasto());
+                avaliacao.setText(destino.getAvaliacao());
+                descricao.setText(destino.getDescricao());
+
+                buttonCadastrarDestino.setText("Alterar");
+
+
+
+
+
+
+                Destino destinoAlterado = criaDestino();
+
+                autenticaCadastroViagemForm();
+
+                editarViagem(destinoAlterado);
+
+                Log.d("sucesso", destino.getPais());
+            }
+        }
     }
 
+    private void getValoresTela(){
+
+        pais = (EditText) findViewById(R.id.editTextTextPais);
+        estado = (EditText) findViewById(R.id.editTextTextEstado);
+        endereco = (EditText) findViewById(R.id.editTextTextEndereco);
+        hospedagem = (EditText) findViewById(R.id.editTextTextHospedagem);
+        valorGasto = (EditText) findViewById(R.id.editTextValorGasto);
+        avaliacao = (EditText) findViewById(R.id.editTextAvaliacao);
+        descricao = (EditText) findViewById(R.id.editTextTextDescricao);
+    }
+
+
     private void autenticaCadastroViagemForm(){
+
+        getValoresTela();
 
         if(pais.getText().toString().isEmpty()){
             Toast.makeText(getApplicationContext(), "O país deve ser digitado", Toast.LENGTH_SHORT).show();
@@ -115,31 +156,54 @@ public class CadastroViagemActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "A descricao deve ser digitada", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        gravarViagens();
     }
 
     private void gravarViagens(){
 
         try {
-            Destino destino = new Destino(
-                    pais.getText().toString(),
-                    estado.getText().toString(),
-                    endereco.getText().toString(),
-                    hospedagem.getText().toString(),
-                    valorGasto.getText().toString(),
-                    avaliacao.getText().toString(),
-                    descricao.getText().toString());
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            Destino destino = criaDestino();
 
             db.collection("Destino")
                     .add(destino)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Log.d("sucesso", "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Log.d("sucesso", "Nova viagem cadastrada com sucesso: " + documentReference.getId());
                             Toast.makeText(getApplicationContext(), "Nova viagem cadastrada com sucesso", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("error", "Erro ao cadastrar nova viagem", e);
+                            Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+        catch (Exception e){
+            Log.w("error", e.getMessage());
+            Toast.makeText(CadastroViagemActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void editarViagem(Destino destino) {
+
+        try {
+
+            DocumentReference documentReference = db.collection("Destino").document(destino.getId());
+            documentReference.update("pais", destino.getPais());
+            documentReference.update("estado", destino.getEstado());
+            documentReference.update("endereco", destino.getEndereco());
+            documentReference.update("hospedagem", destino.getHospedagem());
+            documentReference.update("valorGasto", destino.getValorGasto());
+            documentReference.update("avaliacao", destino.getAvaliacao());
+            documentReference.update("descricao", destino.getDescricao())
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("sucesso", "Registro alterado com sucesso");
+                            Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -154,5 +218,17 @@ public class CadastroViagemActivity extends AppCompatActivity {
             Log.w("error", e.getMessage());
             Toast.makeText(CadastroViagemActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private Destino criaDestino(){
+
+        return new Destino(
+                pais.getText().toString(),
+                estado.getText().toString(),
+                endereco.getText().toString(),
+                hospedagem.getText().toString(),
+                valorGasto.getText().toString(),
+                avaliacao.getText().toString(),
+                descricao.getText().toString());
     }
 }

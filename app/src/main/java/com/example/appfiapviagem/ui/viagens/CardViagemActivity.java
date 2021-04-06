@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.appfiapviagem.R;
 
-public class AlterarViagemActivity extends AppCompatActivity {
+public class CardViagemActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alterar_viagem);
+        setContentView(R.layout.activity_card_viagem);
     }
 }

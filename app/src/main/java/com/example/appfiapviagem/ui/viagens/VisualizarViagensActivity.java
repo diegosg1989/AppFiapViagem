@@ -78,10 +78,11 @@ public class VisualizarViagensActivity extends AppCompatActivity {
                                 public void onItemClick(Destino destino) {
 
                                     Intent intent = new Intent(VisualizarViagensActivity.this, CadastroViagemActivity.class);
-                                    intent.putExtra("chave", destino);
+                                    intent.putExtra("destino", destino);
+                                    intent.putExtra("acao", "alterar");
                                     startActivity(intent);
 
-                                    Log.d("sucesso", destino.getPais());
+                                    Log.d("sucesso", "irá alterar os dados");
                                 }
                             });
 

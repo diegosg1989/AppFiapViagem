@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button buttonLogin;
 
-    private TextView textViewCadastro;
+    private TextView textViewCadastrar;
 
     private FirebaseAuth mAuth;
 
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editTextTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
-        textViewCadastro = (TextView) findViewById(R.id.textViewCadastro);
+        textViewCadastrar = (TextView) findViewById(R.id.textViewCadastro);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
         );
 
-        textViewCadastro.setOnClickListener(
+        textViewCadastrar.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -99,16 +99,16 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                Log.d("success", "signInWithEmail:success");
+                                Log.d("sucesso", "Usuario logado firebase com sucesso");
                                 Toast.makeText(LoginActivity.this, "Usuario logado firebase com sucesso", Toast.LENGTH_SHORT).show();
 
-                                Intent i = new Intent(LoginActivity.this, ProfileActivity.class);
-                                i.putExtra("Email", mAuth.getCurrentUser().getEmail());
+                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                intent.putExtra("email", mAuth.getCurrentUser().getEmail());
 
-                                startActivity(i);
+                                startActivity(intent);
 
                             } else {
-                                Log.w("error", "signInWithEmail:failure", task.getException());
+                                Log.w("erro", "Erro de autenticacao firebase", task.getException());
                                 Toast.makeText(LoginActivity.this, "Erro de autenticacao firebase", Toast.LENGTH_SHORT).show();
                             }
                         }

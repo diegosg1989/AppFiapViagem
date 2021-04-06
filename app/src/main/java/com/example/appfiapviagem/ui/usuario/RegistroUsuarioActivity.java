@@ -96,21 +96,21 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Log.d("success", "createUserWithEmail:success");
+                                Log.d("sucesso", "Usuario cadastrado com sucesso");
                                 FirebaseUser user = mAuth.getCurrentUser();
 
                                 Toast.makeText(getApplicationContext(), "Usuario cadastrado com sucesso", Toast.LENGTH_SHORT).show();
 
                             } else {
-                                Log.w("error", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(RegistroUsuarioActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                Log.w("erro", "Erro de autenticacao firebase", task.getException());
+                                Toast.makeText(RegistroUsuarioActivity.this, "Erro de autenticacao firebase.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
             );
         }
         catch (Exception e){
-            Log.w("error", e.getMessage());
+            Log.w("erro", e.getMessage());
             Toast.makeText(RegistroUsuarioActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
