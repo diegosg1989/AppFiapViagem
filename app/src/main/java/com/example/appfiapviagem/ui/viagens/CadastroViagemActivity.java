@@ -32,6 +32,7 @@ public class CadastroViagemActivity extends AppCompatActivity {
     private EditText avaliacao;
     private EditText descricao;
     private Button buttonCadastrarDestino;
+    private Button buttonVoltar;
 
     private TextView textViewNovoDestino;
 
@@ -48,6 +49,7 @@ public class CadastroViagemActivity extends AppCompatActivity {
 
         textViewNovoDestino = (TextView) findViewById(R.id.textViewNovoDestino);
         buttonCadastrarDestino = (Button) findViewById(R.id.buttonCadastrarDestino);
+        buttonVoltar = (Button) findViewById(R.id.buttonVoltar);
 
         db = FirebaseFirestore.getInstance();
 
@@ -110,6 +112,16 @@ public class CadastroViagemActivity extends AppCompatActivity {
                 );
             }
         }
+
+        buttonVoltar.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(CadastroViagemActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
     }
 
     private void getValoresTela(){

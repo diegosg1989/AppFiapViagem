@@ -38,11 +38,11 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonListaViagens" />
 
     <Button
-        android:id="@+id/buttonListaUsuarios"
+        android:id="@+id/buttonSobre"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="visualizar usuários"
+        android:text="Sobre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonNovoUsuario" />

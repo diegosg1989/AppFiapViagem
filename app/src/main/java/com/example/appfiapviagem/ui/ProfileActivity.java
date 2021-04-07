@@ -19,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button buttonNovaViagem;
     private Button buttonListaViagens;
     private Button buttonNovoUsuario;
-    private Button buttonListaUsuarios;
+    private Button buttonSobre;
 
     private Button buttonLogout;
 
@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         buttonNovaViagem = (Button) findViewById(R.id.buttonNovaViagem);
         buttonListaViagens = (Button) findViewById(R.id.buttonListaViagens);
         buttonNovoUsuario = (Button) findViewById(R.id.buttonNovoUsuario);
-        buttonListaUsuarios = (Button) findViewById(R.id.buttonListaUsuarios);
+        buttonSobre = (Button) findViewById(R.id.buttonSobre);
 
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 
@@ -64,6 +64,16 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(ProfileActivity.this, RegistroUsuarioActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        buttonSobre.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(ProfileActivity.this, SobreActivity.class);
                         startActivity(intent);
                     }
                 }
