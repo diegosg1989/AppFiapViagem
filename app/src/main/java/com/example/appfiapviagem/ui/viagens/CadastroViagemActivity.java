@@ -51,6 +51,8 @@ public class CadastroViagemActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        Bundle bundle = getIntent().getExtras();
+
         buttonCadastrarDestino.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -65,8 +67,6 @@ public class CadastroViagemActivity extends AppCompatActivity {
                     }
                 }
         );
-
-        Bundle bundle = getIntent().getExtras();
 
         if(bundle != null){
 
@@ -90,18 +90,24 @@ public class CadastroViagemActivity extends AppCompatActivity {
 
                 buttonCadastrarDestino.setText("Alterar");
 
+                buttonCadastrarDestino.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
+                                autenticaCadastroViagemForm();
 
+                                Destino destinoAlterado = criaDestino();
 
+                                destinoAlterado.setId(destino.getId());
 
+                                editarViagem(destinoAlterado);
 
-                Destino destinoAlterado = criaDestino();
-
-                autenticaCadastroViagemForm();
-
-                editarViagem(destinoAlterado);
-
-                Log.d("sucesso", destino.getPais());
+                                Intent intent = new Intent(CadastroViagemActivity.this, ProfileActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                );
             }
         }
     }
@@ -202,15 +208,15 @@ public class CadastroViagemActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Log.d("sucesso", "Registro alterado com sucesso");
-                            Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
+                            Log.d("sucesso", "Viagem alterada com sucesso");
+                            Toast.makeText(getApplicationContext(), "Viagem alterada com sucesso", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Log.w("error", "Error adding document", e);
-                            Toast.makeText(getApplicationContext(), "Erro ao cadastrar nova viagem", Toast.LENGTH_SHORT).show();
+                            Log.w("error", "Erro ao alterar a viagem", e);
+                            Toast.makeText(getApplicationContext(), "Erro ao alterar a viagem", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
