@@ -31,6 +31,6 @@ Foi desenvolvido uma solução de cadastramento de viagens, onde permite um CRUD
 
   - **Firestore** onde consta os dados gravado do app:
   
-    - Clicar em **Add Cloud Firestore to your app** onde todas as bibliotecas em relação a banco serão inportadas para o projeto
+    - Clicar em **Add Cloud Firestore to your app** onde todas as bibliotecas em relação a banco serão importadas para o projeto
 
 - Executar o projeto em `Run 'app'`, e o sistema abrirá em um emulador do Android Studio
