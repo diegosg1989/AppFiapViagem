@@ -11,10 +11,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.appfiapviagem.R;
 import com.example.appfiapviagem.adapter.DestinoAdapter;
 import com.example.appfiapviagem.model.Destino;
+import com.example.appfiapviagem.ui.ProfileActivity;
 import com.example.appfiapviagem.ui.login.LoginActivity;
 import com.example.appfiapviagem.ui.usuario.RegistroUsuarioActivity;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -38,11 +41,15 @@ public class VisualizarViagensActivity extends AppCompatActivity {
 
     private List<Destino> destinos = new ArrayList<>();
 
+    private Button buttonVoltar;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_viagens);
+
+        buttonVoltar = (Button) findViewById(R.id.buttonVoltarViagens);
 
         recyclerView = findViewById(R.id.recycler);
 
@@ -93,5 +100,15 @@ public class VisualizarViagensActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        buttonVoltar.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(VisualizarViagensActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
     }
 }
